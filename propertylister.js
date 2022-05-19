@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-19 v0';
+const version = '🌎 property lister 2022-05-19 v1';
 
 /* 
  * SPA (Single-Page Application)
@@ -150,7 +150,7 @@ function viewSubmit() {
       <input type="text" id="description" name="description" placeholder="description (Optional)">
       <br>
 
-      <label for="description">bedrooms:</label>
+      <label for="bedrooms">bedrooms:</label>
       <input type="text" id="bedrooms" name="bedrooms" placeholder="bedrooms (Optional)">
       <br>
 
@@ -228,7 +228,7 @@ async function submitForm(event) {
       "property_record_type": null,
       "bedrooms": bedrooms,
       "baths_total": null,
-      "description": null,
+      "description": description,
       "features": null,
       "picture_count": null,
       "picture_data_url": null,
@@ -402,7 +402,6 @@ async function submitForm(event) {
     //let htmlSegment = 'output...';
     //htmlSegment += ' ' + property_id ;
 
-
     const url = origin + "/property-lister/_doc/" + property_id + ".json";
 
     const headers = {};
@@ -437,6 +436,35 @@ POST  property-lister/_search
     "match_all": {}
   }
 }
+*/
+
+/*
+
+
+{
+  "took" : 3,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "property-lister",
+        "_type" : "_doc",
+        "_id" : "8bf6314b4039493ea55a6ab25d7960717a607089.json",
+        "_score" : 1.0,
+        "_source" : {
+          "property_id" : "8bf6314b4039493ea55a6ab25d7960717a607089",
+
 */
 
 async function viewList() {
@@ -490,19 +518,46 @@ async function viewList() {
 
     for (let hit in hits) {
 
+        let _id               = hits[hit]['_id'];
+        console.log(_id);
+
         let property_id       = hits[hit]['_source'].property_id;
         let street_address    = hits[hit]['_source'].street_address;
         let city              = hits[hit]['_source'].city;
         let state_or_province = hits[hit]['_source'].state_or_province;
         let postal_code       = hits[hit]['_source'].postal_code;
 
+        //const doc = String(property_id);
+
+        //console.log(property_id);
+
+        // property_id + .json
+
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Identifier_after_number
+        // var can not start with a number
+        // You will need to rename your variable to avoid the leading number.
+        /*
+
+var 1life = 'foo';
+// SyntaxError: identifier starts immediately after numeric literal
+
+var foo = 1life;
+// SyntaxError: identifier starts immediately after numeric literal
+
+        */
 
         htmlSegment += `
         <div>
           <details>
+
               <summary>
-                  ${street_address} ${city} ${state_or_province} ${postal_code}
+                  ${street_address} ${city} ${state_or_province} ${postal_code} 
+            
+                  <button type="button" onclick="deleteDoc('${_id}')">Delete</button>
+                  <button type="button" onclick="">Edit</button>
+
               </summary>
+
               <p>
         `;
 
@@ -584,6 +639,53 @@ function viewInfo() {
 
 //-----------------------------------------------------------
 
+window.deleteDoc = deleteDoc;
+async function deleteDoc(doc) {
+
+    const url = origin + '/property-lister/_doc/' + doc ;
+
+    console.log('doc is ' + doc);
+
+/*
+    const options = {};
+
+    headers['Content-Type'] = 'application/json';
+    options['Authorization'] = 'Basic ' + base64;
+
+    const response = await fetch(url, {
+        method:'DELETE', 
+        headers: options
+    })
+    .then(getResponse)
+    .catch(err => document.write('Request Failed ', err));
+    let html = '';
+
+    if ( ! response.ok) {
+        const json = await response.json();
+        html += JSON.stringify(json);
+        container.innerHTML = html;
+
+        //history.pushState({page: db + table + id +'deleted'}, db + table + id, "?db=" + db + "&table=" + table + "&id=" + id + "&deleted=False");
+        history.pushState({page: doc +':deleted:false'}, doc + ':deleted:false', "?view=list&doc=" + doc + "&deleted=False");
+    }
+
+*/
+    //const json = await response.json();
+    //html = JSON.stringify(json);
+    //console.log(response.ok);
+    //html += '<hr><a href="?db='+db+'&table='+table+'">db.table</a>';
+    //document.title = db +' '+ table +' '+ id + 'deleted';
+
+console.log('well well delete');
+
+    history.pushState({page: 'list:deleted' + doc}, 'list:deleted:' + doc, "?view=list&_id=" + doc + "&deleted=True");
+    //location.replace('?view=list');
+}
+
+
+
+//-----------------------------------------------------------
+
 //const location_href = new URL(location.href);
 const params = new URLSearchParams(location.search);
 const view = params.get('view');
@@ -642,36 +744,23 @@ window.addEventListener('hashchange', function(event) {
 
 //-----------------------------------------------------------
 
+// https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure
+
 /* this is the layout */
 
 const TopHTML = `
-
+<header class="page-header"></header>
 <nav class="menu">
   <ol>
     <li class="menu-item"><a href="?">Home</a></li>
-    <li class="menu-item"><a href="?view=submit">Submit Listing</a></li>
     <li class="menu-item"><a href="?view=list">Listings</a></li>
-    <li class="menu-item">
-      <a href="?view=info">Info</a>
-      <ol class="sub-menu">
-        <li class="menu-item"><a href="?login">Login</a></li>
-        <li class="menu-item"><a href="?logout">Logout</a></li>
-      </ol>
-    </li>
-    <li class="menu-item"><a href="?view=contact">Contact</a></li>
+    <li class="menu-item"><a href="?view=submit">Submit Listing</a></li>
+    <li class="menu-item"><a href="?view=info">Info</a></li>
   </ol>
 </nav>
 
-<header class="page-header"></header>
 <main class="page-body">
 `;
-
-/*
-    <li class="menu_item" ><a class="menu_link" href="?">Home</a></li>
-    <li class="menu_item" ><a class="menu_link" href="?view=submit">Submit Listing</a></li>
-    <li class="menu_item" ><a class="menu_link" href="?view=list">Listings</a></li>
-    <li class="menu_item" ><a class="menu_link" href="?view=info">Info</a></li>
-*/
 
 // main <main></main> in the middle
 
