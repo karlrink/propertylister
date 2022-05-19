@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-18 v3';
+const version = '🌎 property lister 2022-05-18 v4';
 
 /* 
  * SPA (Single-Page Application)
@@ -645,17 +645,33 @@ window.addEventListener('hashchange', function(event) {
 /* this is the layout */
 
 const TopHTML = `
-<header class="page-header"></header>
+
 <nav class="menu">
-  <ul class="menu_content">
+  <ol>
+    <li class="menu-item"><a href="?">Home</a></li>
+    <li class="menu-item"><a href="?view=submit">Submit Listing</a></li>
+    <li class="menu-item"><a href="?view=list">Listings</a></li>
+    <li class="menu-item">
+      <a href="?view=info">Info</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a href="?login">Login</a></li>
+        <li class="menu-item"><a href="?logout">Logout</a></li>
+      </ol>
+    </li>
+    <li class="menu-item"><a href="?view=contact">Contact</a></li>
+  </ol>
+</nav>
+
+<header class="page-header"></header>
+<main class="page-body">
+`;
+
+/*
     <li class="menu_item" ><a class="menu_link" href="?">Home</a></li>
     <li class="menu_item" ><a class="menu_link" href="?view=submit">Submit Listing</a></li>
     <li class="menu_item" ><a class="menu_link" href="?view=list">Listings</a></li>
     <li class="menu_item" ><a class="menu_link" href="?view=info">Info</a></li>
-  </ul>
-</nav>
-<main class="page-body">
-`;
+*/
 
 // main <main></main> in the middle
 
