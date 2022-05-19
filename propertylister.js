@@ -98,80 +98,6 @@ function viewHome() {
     //history.pushState({page: 'home'}, "home", "?view=home");
 }
 
-// property_id
-// sale_type
-// property_record_type
-
-// amount
-// street_address
-// city
-// county
-// state_or_province
-// postal_code
-
-// latitude
-// longitude
-
-// bedrooms
-// baths_total
-// description
-// features
-// picture_data_source_url
-// living_area_square_feet
-// living_area
-// lot_size
-// hoa_fee
-// parking
-// year_built
-// school_district
-// elementary_school
-// middle_school
-// high_school
-// foundation
-// room_list
-// appliances
-// floor_covering
-// roof_type
-// view_type
-// fips
-// condition
-// stories
-// total_units
-// total_rooms
-// family_room
-// living_room
-// den
-// kitchen
-// basement
-// heating
-// cooling
-// trust_deed_document_number
-// nod_date_defaulted_lien
-// nod_doc_number_defaulted_lien
-// nod_date_default
-// nod_amount_default
-// nod_recording_date
-// nod_recording_year
-// nod_document_number
-// auction_date
-// auction_time
-// nots_trustee_sale_number
-// nots_auction_title
-// nots_auction_address
-// nots_auction_city
-// nots_auction_state
-// nots_auction_zip
-// ...
-
-// reo_document_number
-// judgment_amount
-// legal_description
-// zoning
-// lis_pendens_index_no
-// ...
-
-
-
 
 function viewSubmit() {
 
@@ -263,9 +189,6 @@ async function submitForm(event) {
 
     // property_id = street_address + city + county + state_or_province + postal_code + unit_number
     const property_string = street_address + city + county + state_or_province + postal_code + unit_number;
-    //const property_id = 
-    // digestMessage(text)
-
 
     const property_id = await digestMessage(property_string);
     //console.log(property_id);
@@ -501,20 +424,119 @@ async function submitForm(event) {
 
     htmlSegment += JSON.stringify(response);
 
-
-    //let htmlSegment = '';
-
-
-
-
     document.querySelector('#form-output').innerHTML = htmlSegment;
 
-    history.pushState({page: 'submit'}, "submit", "?view=submit&true");
+    history.pushState({page: 'submit:true'}, "submit:true", "?view=submit&true");
 
 }
 
-//a066549ebafbfecf2ce853c1a06e050d869c76d0 sha-1
-//6efd383745a964768989b9df420811abc6e5873f874fc22a76fe9258e020c2e1 sha-256
+/*
+POST  property-lister/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+*/
+
+async function viewList() {
+
+    let htmlSegment = '';
+    htmlSegment += `
+    <div>
+    View List
+    </div>
+    `;
+
+    const opensearch_data =
+    {
+      "query": {
+        "match_all": {}
+      }
+    }
+
+    const url = origin + "/property-lister/_search";
+
+    const headers = {};
+    headers['Authorization'] = 'Basic ' + base64;
+    headers['Content-Type'] = 'application/json';
+
+    const post = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      headers: headers,
+      body: JSON.stringify(opensearch_data)
+    })
+    .then(getResponse)
+    .catch(err => document.write('Request Failed ', err));
+
+    const response = await post.json();
+
+    const hits = JSON.parse(JSON.stringify(response['hits']['hits']));
+
+    const response_took = JSON.parse(JSON.stringify(response['took'])); // these are milliseconds
+
+    const hits_total_value    = JSON.parse(JSON.stringify(response['hits']['total'].value));
+    const hits_total_relation = JSON.parse(JSON.stringify(response['hits']['total'].relation));
+
+    htmlSegment += `
+    <div>
+    <p>
+        hits: ${hits_total_relation} ${hits_total_value} (display: 1-??) took: ${response_took} milliseconds
+    </p>
+    </div>
+    `;
+
+
+    for (let hit in hits) {
+
+        let property_id       = hits[hit]['_source'].property_id;
+        let street_address    = hits[hit]['_source'].street_address;
+        let city              = hits[hit]['_source'].city;
+        let state_or_province = hits[hit]['_source'].state_or_province;
+        let postal_code       = hits[hit]['_source'].postal_code;
+
+
+        htmlSegment += `
+        <div>
+          <details>
+              <summary>
+                  ${street_address} ${city} ${state_or_province} ${postal_code}
+              </summary>
+              <p>
+        `;
+
+        for (let item in hits[hit]['_source']){
+        
+            let value = hits[hit]['_source'][item];
+
+            /*
+            if (value !== null) {
+             //console.log(item);
+             //console.log(value);
+             htmlSegment += ` ${item}: ${value} <br>`;
+            }
+            */
+
+            htmlSegment += ` ${item}: ${value} <br>`;
+
+        } //end for hits
+
+        htmlSegment += `
+              </p>
+          </details>
+        </div>
+        `;
+
+    } //end for
+
+
+    container.innerHTML = TopHTML + htmlSegment + BottomHTML;
+
+    history.pushState({page: 'list'}, "list", "?view=list");
+}
+
+
 
 // property_id = street_address + city + county + state_or_province + postal_code + unit_number
 // https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
@@ -590,6 +612,10 @@ function router() {
             return viewSubmit();
         }
 
+        if (view === 'list') {
+            return viewList();
+        }
+
     }
 
     /*
@@ -624,6 +650,7 @@ const TopHTML = `
   <ul class="menu_content">
     <li class="menu_item" ><a class="menu_link" href="?">Home</a></li>
     <li class="menu_item" ><a class="menu_link" href="?view=submit">Submit Listing</a></li>
+    <li class="menu_item" ><a class="menu_link" href="?view=list">Listings</a></li>
     <li class="menu_item" ><a class="menu_link" href="?view=info">Info</a></li>
   </ul>
 </nav>
