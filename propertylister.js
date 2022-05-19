@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-18 v2';
+const version = '🌎 property lister 2022-05-18 v3';
 
 /* 
  * SPA (Single-Page Application)
@@ -475,9 +475,34 @@ async function submitForm(event) {
     }
 
 
-    let htmlSegment = 'output...';
+    let htmlSegment = '';
+    //let htmlSegment = 'output...';
+    //htmlSegment += ' ' + property_id ;
 
-    htmlSegment += ' ' + property_id ;
+
+    const url = origin + "/property-lister/_doc/" + property_id + ".json";
+
+    const headers = {};
+    headers['Authorization'] = 'Basic ' + base64;
+    headers['Content-Type'] = 'application/json';
+
+    const post = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      headers: headers,
+      body: JSON.stringify(opensearch_data)
+    })
+    .then(getResponse)
+    .catch(err => document.write('Request Failed ', err));
+
+    const response = await post.json();
+
+    console.log(JSON.stringify(response));
+
+    htmlSegment += JSON.stringify(response);
+
+
+    //let htmlSegment = '';
 
 
 
