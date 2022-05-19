@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-18 v4';
+const version = '🌎 property lister 2022-05-19 v0';
 
 /* 
  * SPA (Single-Page Application)
