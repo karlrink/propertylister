@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-19 v1';
+const version = '🌎 property lister 2022-05-20 v0';
 
 /* 
  * SPA (Single-Page Application)
@@ -103,8 +103,9 @@ function viewSubmit() {
 
     document.title = 'PropertyLister: Submit';
 
-    let html = '';
-    html += `
+    let htmlSegment = '';
+
+    htmlSegment += `
 
     <div>
 
@@ -145,17 +146,48 @@ function viewSubmit() {
 
       <hr>
 
+    `;
 
-      <label for="description">description:</label>
-      <input type="text" id="description" name="description" placeholder="description (Optional)">
-      <br>
+      //<label for="hoa_fee">hoa_fee:</label>
+      //<input type="text" id="hoa_fee" name="hoa_fee" placeholder="hoa_fee (Optional)">
+      //<br>
 
-      <label for="bedrooms">bedrooms:</label>
-      <input type="text" id="bedrooms" name="bedrooms" placeholder="bedrooms (Optional)">
-      <br>
 
-      <br>
+    // for loop the field_options
 
+    const field_options = [
+      "description", "bedrooms", "baths_total", "features",
+      "living_area_square_feet", "living_area", "lot_size",
+      "hoa_fee", "parking", "year_built", 
+      "school_district", "elementary_school", "middle_school", "high_school",
+      "foundation", "room_list", "appliances", "floor_covering",
+      "roof_type", "view_type",
+      "latitude", "longitude",
+      "fips", "condition", "stories", "total_units", "total_rooms",
+      "family_room", "living_room", "den", "kitchen", "basement", 
+      "heating", "cooling", "zoning", "parking_spaces",
+      "pool", "style", "construction_type", "exterior_walls",
+      "full_details", "owner_occupied" ];
+
+    for (let i = 0; i < field_options.length; i++) {
+
+        console.log(field_options[i]);
+
+        let option = field_options[i];
+
+        htmlSegment += `
+
+          <label for="${option}">${option}:</label>
+          <input type="text" id="${option}" name="${option}"" placeholder="${option} (Optional)">
+          <br>
+
+        `;
+
+    }
+                        
+
+
+    htmlSegment += `
     </form>
 
     </div>
@@ -164,7 +196,7 @@ function viewSubmit() {
 
     `;
 
-    container.innerHTML = TopHTML + html + BottomHTML;
+    container.innerHTML = TopHTML + htmlSegment + BottomHTML;
 
     const form = document.getElementById('form');
 
