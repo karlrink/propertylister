@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-22 v0';
+const version = '🌎 property lister 2022-05-22 v1';
 
 /* 
  * SPA (Single-Page Application)
@@ -68,10 +68,19 @@ function viewHome() {
 
         html += `
         <style>
-          div { text-align: center;
-                vertical-align: middle;
-                margin-top: 10%;
+
+          body,html {
+            background: white;
+            color: black;
+            background-color: white;
           }
+
+          div { 
+            text-align: center;
+            vertical-align: middle;
+            margin-top: 10%;
+          }
+
         </style>
 
         <div>
