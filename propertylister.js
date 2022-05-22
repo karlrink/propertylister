@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-20 v0';
+const version = '🌎 property lister 2022-05-22 v0';
 
 /* 
  * SPA (Single-Page Application)
@@ -83,12 +83,9 @@ function viewHome() {
 
     } else {
 
-        document.title = 'PropertyLister: Home';
+        document.title = 'Property Lister: Home';
 
-        let htmlSegment = `
-        `;
-
-        html = TopHTML + htmlSegment + BottomHTML;
+        html = homeHTML;
 
         history.pushState({page: 'home'}, "home", "?view=home");
     }
@@ -98,14 +95,41 @@ function viewHome() {
     //history.pushState({page: 'home'}, "home", "?view=home");
 }
 
+function viewWelcome() {
+    document.title = 'Property Lister: Welcome';
+    container.innerHTML = welcomeHTML;
+    history.pushState({page: 'welcome'}, "welcome", "?view=welcome");
+}
+
+function viewPhoto() {
+    document.title = 'Property Lister: Photo';
+
+    let htmlSegment = `
+    Take a Photo
+    <br>
+
+    🚧 UNDER CONSTRUCTION 🚧
+
+    <br>
+
+    <a href="?"><button type="button">Home</button></a>
+    `;
+
+    container.innerHTML = htmlSegment;
+    history.pushState({page: 'photo'}, "photo", "?view=photo");
+}
 
 function viewSubmit() {
 
-    document.title = 'PropertyLister: Submit';
+    document.title = 'Property Lister: Submit';
 
     let htmlSegment = '';
 
     htmlSegment += `
+    <header>
+        <a href="?"><button type="button">Home</button></a>
+    </header>
+    <main>
 
     <div>
 
@@ -194,9 +218,11 @@ function viewSubmit() {
 
     <div id="form-output"></div>
 
+    </main>
+    <footer></footer>
     `;
 
-    container.innerHTML = TopHTML + htmlSegment + BottomHTML;
+    container.innerHTML = htmlSegment;
 
     const form = document.getElementById('form');
 
@@ -503,6 +529,11 @@ async function viewList() {
 
     let htmlSegment = '';
     htmlSegment += `
+    <header>
+      <a href="?">Home</a>
+    </header>
+    <main>
+
     <div>
     View List
     </div>
@@ -613,12 +644,15 @@ var foo = 1life;
               </p>
           </details>
         </div>
+
+        </main>
+        <footer></footer>
         `;
 
     } //end for
 
 
-    container.innerHTML = TopHTML + htmlSegment + BottomHTML;
+    container.innerHTML = htmlSegment ;
 
     history.pushState({page: 'list'}, "list", "?view=list");
 }
@@ -641,6 +675,8 @@ function viewInfo() {
     let html = '';
 
     html += `
+    <header></header>
+    <main>
     <div>
     `;
 
@@ -654,6 +690,7 @@ function viewInfo() {
     html += `
     </div>
     <div>
+            <a href="?">Home</a>
             <button type="button" onclick="return addLocalStore();">Add Item</button>
             <button type="button" onclick="localStorage.clear();location.reload();">Clear Storage</button>
             <button type="button" onclick="return Login();">Login</button>
@@ -662,9 +699,11 @@ function viewInfo() {
     <div>
       <p>${version}</p>
     </div>
+    </main>
+    <footer></footer>
     `;
 
-    container.innerHTML = TopHTML + html + BottomHTML;
+    container.innerHTML = html;
 
     history.pushState({page: 'info'}, "info", "?view=info");
 }
@@ -750,6 +789,14 @@ function router() {
             return viewList();
         }
 
+        if (view === 'photo') {
+            return viewPhoto();
+        }
+
+        if (view === 'welcome') {
+            return viewWelcome();
+        }
+
     }
 
     /*
@@ -760,6 +807,19 @@ function router() {
 
     return viewHome();
 }
+
+/*
+
+?view=home
+?view=welcome
+?view=submit
+?view=list
+?view=photo
+?view=info
+?logout
+
+
+*/
 
 //-----------------------------------------------------------
 
@@ -775,34 +835,231 @@ window.addEventListener('hashchange', function(event) {
 */
 
 //-----------------------------------------------------------
+/*
+<div id="container">
+<header>
+</header>
+
+<main>
+</main>
+
+<footer>
+</footer>
+</div>
+*/
 
 // https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure
 
 /* this is the layout */
 
+/*
 const TopHTML = `
-<header class="page-header"></header>
-<nav class="menu">
-  <ol>
-    <li class="menu-item"><a href="?">Home</a></li>
-    <li class="menu-item"><a href="?view=list">Listings</a></li>
-    <li class="menu-item"><a href="?view=submit">Submit Listing</a></li>
-    <li class="menu-item"><a href="?view=info">Info</a></li>
-  </ol>
-</nav>
-
-<main class="page-body">
+<header></header>
+<main>
 `;
 
 // main <main></main> in the middle
 
 const BottomHTML = `
 </main>
-<footer class="page-footer"></footer>
+<footer></footer>
+`;
+                    //<div class="overlay"></div>
+         //style="background-image: url(https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
+         //       background-position: center;
+         //       background-size: cover;">
+*/
+
+const homeHTML = `
+<header><div class="boarder-top-red"></div></header>
+<main>
+  <div class="centered">
+
+                            <div>
+
+                                <div class="hexagon-menu clear">
+
+                                    <!-- menu item 1 -->
+
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href="?view=welcome"  class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-universal-access"></i>
+                                                </span>
+                                                <span class="title">Welcome</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <!-- menu item 2 -->
+
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href="?view=submit" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-bullseye"></i>
+                                                </span>
+                                                <span class="title">Submit Listing</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <!-- menu item 3 -->
+
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href="?view=list" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-clipboard"></i>
+                                                </span>
+                                                <span class="title">View Listings</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <!-- menu item 4 -->
+
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href="?view=photo" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-id-badge"></i>
+                                                </span>
+                                                <span class="title">Photo</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <!-- menu item 5 -->
+
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href="?view=info" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-life-ring"></i>
+                                                </span>
+                                                <span class="title">Info</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+
+                                    <!-- menu item 6 -->
+
+                                    <div class="hexagon-item">
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <a href="?logout" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="fa fa-clipboard"></i>
+                                                </span>
+                                                <span class="title">Logout</span>
+                                            </span>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+
+                                    <!-- menu item ? -->
+
+
+                                </div>
+
+                            </div>
+
+  </div>
+</main>
+<footer></footer>
 `;
 
-
 //-----------------------------------------------------------
+
+const welcomeHTML = `
+<header></header>
+<main>
+Welcome!
+  to my little page :-)
+</main>
+
+<nav class="crumbs">
+  <ol>
+    <li class="crumb"><a href="?view=home">Home</a></li>
+  </ol>
+</nav>
+
+<footer></footer>
+`;
 
 let run = router();
 
