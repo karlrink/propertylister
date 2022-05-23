@@ -632,8 +632,12 @@ textarea, label {
   */
 
 div.transform-scale {
-  transform: scale(0.3);
+  transform: scale(0.5);
+  float: left;
+  margin-left: 20px;
+
   /*
+  position: relative;
   transform: scale(0.30, 0.30);
   transform: translate(-50%, -50%);
   */

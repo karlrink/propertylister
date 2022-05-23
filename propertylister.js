@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-22 v4';
+const version = '🌎 property lister 2022-05-22 v5';
 
 /* 
  * SPA (Single-Page Application)
@@ -1055,49 +1055,38 @@ const homeHTML = `
 //-----------------------------------------------------------
 
 const welcomeHTML = `
-<header></header>
-<main>
-Welcome!
-  to my little page :-)
-</main>
-
-<nav class="crumbs">
-  <ol>
-    <li class="crumb"><a href="?view=home">Home</a></li>
-  </ol>
-</nav>
-
-<button class="action" ontouchstart="" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">Testing Touch on iOS</button>
-
-<br>
-
+<header> <div class="boarder-top-red"></div>
+</header>
+<nav>
 <div class="transform-scale">
-
-                                    <div class="hexagon-item">
-                                        <div class="hex-item">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                        <div class="hex-item">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                        <a href="?" class="hex-content">
-                                            <span class="hex-content-inner">
-                                                <span class="icon">
-                                                    <i class="fa fa-house"></i>
-                                                </span>
-                                                <span class="title">Home</span>
-                                            </span>
-                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-
+    <div class="hexagon-item">
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="?" class="hex-content">
+            <span class="hex-content-inner">
+                <span class="icon">
+                    <i class="fa fa-house"></i>
+                </span>
+                <span class="title">Home</span>
+            </span>
+            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+            </svg>
+        </a>
+    </div>
 </div>
+</nav>
+<main>
+    Welcome to this page!
+</main>
 <footer></footer>
 `;
 
