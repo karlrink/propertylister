@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-23 v0';
+const version = '🌎 property lister 2022-05-23 v1';
 
 /* 
  * SPA (Single-Page Application)
@@ -1055,8 +1055,7 @@ const homeHTML = `
 //-----------------------------------------------------------
 
 const welcomeHTML = `
-<header> <div class="boarder-top-red"></div>
-</header>
+<header><div class="boarder-top-red"></div></header>
 <nav>
 <div class="transform-scale">
     <div class="hexagon-item">
@@ -1100,8 +1099,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <br>
 <br>
-<a href="https://en.wikipedia.org/wiki/Lorem_ipsum"> https://en.wikipedia.org/wiki/Lorem_ipsum </a>
-
+<a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank"> https://en.wikipedia.org/wiki/Lorem_ipsum </a>
 
 </main>
 <footer></footer>

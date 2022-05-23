@@ -16,7 +16,8 @@
 
 html {
   font-family: "Libre Baskerville", serif;
-  color: #ababab;
+  /* color: #ababab; */
+  color: white;
   background-color: #0c0f15;
 }
 /*
@@ -395,7 +396,7 @@ textarea, label {
   Start Styling
 -------------------------------------------------*/
 
-.mt20{
+.margin-top-20px {
     margin-top:20px;
 }
 
