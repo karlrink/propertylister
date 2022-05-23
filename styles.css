@@ -838,6 +838,10 @@ textarea, label {
 
 */
 
+/*
+  https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-touch-callout
+  */
+
 @media only screen and (max-width: 767px) {
 
   div.boarder-top-red {
@@ -872,6 +876,28 @@ textarea, label {
       transform: rotate(30deg) translate(0px, 0px);
   }
 }
+
+
+@supports (-webkit-touch-callout: none) {
+   /* CSS specific to iOS devices */
+
+   /* #ccc gray */
+
+   html,body,main {
+       background: #ccc; 
+   }
+}
+
+@supports not (-webkit-touch-callout: none) {
+   /* CSS for other than iOS devices */
+
+   html,body,main {
+       background: blue;
+   }
+}
+
+
+
 
 /*
 <nav class="crumbs">
@@ -914,6 +940,15 @@ nav[class="crumbs"] {
 }
 
 
-/* custom */
+/* 
+
+https://developer.apple.com/library/archive/documentation/InternetWeb/Conceptual/SafariVisualEffectsProgGuide/AnimatingCSSTransitions/AnimatingCSSTransitions.html
+
+https://developer.apple.com/library/archive/documentation/InternetWeb/Conceptual/SafariVisualEffectsProgGuide/AnimatingWithKeyframes/AnimatingWithKeyframes.html
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations
+
+
+*/
 
 
