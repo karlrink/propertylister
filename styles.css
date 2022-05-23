@@ -1,4 +1,6 @@
 
+
+
 :root {
 /*
   --speed: 0.85;
@@ -881,10 +883,8 @@ textarea, label {
 @supports (-webkit-touch-callout: none) {
    /* CSS specific to iOS devices */
 
-   /* #ccc gray */
-
    html,body,main {
-       background: #ccc; 
+       background: black; 
    }
 }
 
@@ -892,7 +892,8 @@ textarea, label {
    /* CSS for other than iOS devices */
 
    html,body,main {
-       background: blue;
+       /* #ccc gray */
+       background: black;
    }
 }
 
