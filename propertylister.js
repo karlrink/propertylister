@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-23 v1';
+const version = '🌎 property lister 2022-05-23';
 
 /* 
  * SPA (Single-Page Application)
@@ -982,7 +982,7 @@ const homeHTML = `
                                         <a href="?view=photo" class="hex-content">
                                             <span class="hex-content-inner">
                                                 <span class="icon">
-                                                    <i class="fa fa-id-badge"></i>
+                                                    <i class="fa fa-camera"></i>
                                                 </span>
                                                 <span class="title">Photo</span>
                                             </span>
@@ -1008,11 +1008,13 @@ const homeHTML = `
                                         <a href="?view=info" class="hex-content">
                                             <span class="hex-content-inner">
                                                 <span class="icon">
-                                                    <i class="fa fa-life-ring"></i>
+                                                    <i class="fa fa-lightbulb"></i>
                                                 </span>
                                                 <span class="title">Info</span>
                                             </span>
-                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                                            </svg>
                                         </a>
                                     </div>
 
@@ -1032,11 +1034,13 @@ const homeHTML = `
                                         <a href="?logout" class="hex-content">
                                             <span class="hex-content-inner">
                                                 <span class="icon">
-                                                    <i class="fa fa-clipboard"></i>
+                                                    <i class="fa fa-arrow-right-from-bracket"></i>
                                                 </span>
                                                 <span class="title">Logout</span>
                                             </span>
-                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                                            </svg>
                                         </a>
                                     </div>
 
