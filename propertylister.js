@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-22 v3';
+const version = '🌎 property lister 2022-05-22 v4';
 
 /* 
  * SPA (Single-Page Application)
@@ -1066,6 +1066,9 @@ Welcome!
     <li class="crumb"><a href="?view=home">Home</a></li>
   </ol>
 </nav>
+
+<button class="action" ontouchstart="" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">Testing Touch on iOS</button>
+
 
 <footer></footer>
 `;

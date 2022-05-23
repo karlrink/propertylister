@@ -949,6 +949,21 @@ https://developer.apple.com/library/archive/documentation/InternetWeb/Conceptual
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations
 
+https://stackoverflow.com/questions/58087446/all-media-queries-for-iphone-13-pro-max-mini-and-older-iphones
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  {  STYLES GO HERE }
+
+and (orientation: portrait) 
+and (orientation: landscape)
+
+
+https://www.w3.org/Style/Examples/007/center.en.html
+
+https://plnkr.co/edit/W47h7jaFeUHc3cCYRmbs?p=preview
+
+
 
 */
 
