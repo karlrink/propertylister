@@ -634,9 +634,11 @@ textarea, label {
 div.transform-scale {
   transform: scale(0.5);
   float: left;
-  margin-left: 20px;
+  margin-top: -35px;
+  margin-left: -50px;
 
   /*
+  box-sizing: flex-box;
   position: relative;
   transform: scale(0.30, 0.30);
   transform: translate(-50%, -50%);
