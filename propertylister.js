@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-23';
+const version = '🌎 property lister 2022-05-24-0';
 
 /* 
  * SPA (Single-Page Application)
@@ -128,6 +128,16 @@ function viewPhoto() {
     history.pushState({page: 'photo'}, "photo", "?view=photo");
 }
 
+/*
+    <nav style="
+                transform: scale(0.5);
+                float: left;
+                margin-top: -35px;
+                margin-left: -50px;
+    ">
+*/
+//<form id="form" onsubmit="submitForm(event)">
+
 function viewSubmit() {
 
     document.title = 'Property Lister: Submit';
@@ -135,14 +145,63 @@ function viewSubmit() {
     let htmlSegment = '';
 
     htmlSegment += `
-    <header>
-        <a href="?"><button type="button">Home</button></a>
+    <header class="boarder-top-red"> 
+
+        <a href="?">
+        <button type="button">
+              <i class="fa fa-home"
+                 style="
+
+                   color:#ff0037;
+                   background-color: inherit;
+                   background: inherit;
+
+              "></i>
+        </button>
+        </a>
+
     </header>
-    <main>
 
-    <div>
+<form id="form" onsubmit="submitForm(event)">
 
-    <form id="form" onsubmit="submitForm(event)">
+<div style="
+
+     transform: scale(0.5);
+     float: right;
+     position: fixed;
+     top: 0;
+
+     width: 100%;
+     left: 40%;
+
+">
+    <div class="hexagon-item">
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>   
+        </div>
+        <button class="hex-content">
+            <span class="hex-content-inner">
+                <span class="icon">
+                    <i class="fa fa-bullseye"></i>
+                </span>
+                <span class="title">Submit</span>
+            </span>
+            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+            </svg>
+        </button>
+    </div>
+
+</div>
+
+<br>
 
       <label for="amount">amount:</label>
       <input type="text" id="amount" name="amount" placeholder="$1.00">
@@ -175,8 +234,8 @@ function viewSubmit() {
       <br>
 
       <br>
-      <button type="submit">Submit</button>
 
+      <button type="submit">Submit</button>
       <hr>
 
     `;
@@ -221,14 +280,16 @@ function viewSubmit() {
 
 
     htmlSegment += `
-    </form>
 
-    </div>
 
+</form>
+
+<main>
     <div id="form-output"></div>
+</main>
 
-    </main>
-    <footer></footer>
+<footer>
+</footer>
     `;
 
     container.innerHTML = htmlSegment;
@@ -490,9 +551,12 @@ async function submitForm(event) {
 
     htmlSegment += JSON.stringify(response);
 
+
     document.querySelector('#form-output').innerHTML = htmlSegment;
 
     history.pushState({page: 'submit:true'}, "submit:true", "?view=submit&true");
+
+    alert(htmlSegment);
 
 }
 
@@ -878,6 +942,61 @@ const BottomHTML = `
          //       background-position: center;
          //       background-size: cover;">
 */
+
+const submitButtonHTML = `
+    <div class="hexagon-item">
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="?" class="hex-content">
+            <span class="hex-content-inner">
+                <span class="icon">
+                    <i class="fa fa-bullseye"></i>
+                </span>
+                <span class="title">Submit</span>
+            </span>
+            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+            </svg>
+        </a>
+    </div>
+`;
+
+
+
+const backButtonHTML = `
+    <div class="hexagon-item">
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="hex-item">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="?" class="hex-content">
+            <span class="hex-content-inner">
+                <span class="icon">
+                    <i class="fa fa-house"></i>
+                </span>
+                <span class="title">Home</span>
+            </span>
+            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+            </svg>
+        </a>
+    </div>
+`;
+
 
 const homeHTML = `
 <header><div class="boarder-top-red"></div></header>

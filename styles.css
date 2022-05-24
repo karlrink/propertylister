@@ -137,11 +137,57 @@ a {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s; 
 }
+
 a:hover, a:focus {
     color: #ababab;
     text-decoration: none;
     outline: 0 none; 
 }
+
+
+
+/*
+form button[type="submit"] {
+
+    color: yellow;
+     transform: scale(0.5);
+     float: right;
+     position: fixed;
+     top: 0;
+
+     width: 100%;
+     left: 40%;
+     background: none;
+     border: inherit;
+}
+*/
+
+/*
+button[type=submit] {
+   	background: none;
+   	background-color: none;
+	color: inherit;
+	border: inherit;
+	padding: inherit;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+*/
+
+
+
+/*
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+<a href="https://google.com" class="button">Go to Google</a>
+*/
 
 h1, h2, h3,
 h4, h5, h6 {
@@ -518,115 +564,6 @@ textarea, label {
 
 /* End of container */
 
-.hexagon-item-small {
-  cursor: pointer;
-  width: 50px;
-  height: 44px;
-  float: left;
-  margin-left: -29px;
-  z-index: 0;
-  position: relative;
-  -webkit-transform: rotate(30deg);
-  -moz-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
-  -o-transform: rotate(30deg);
-  transform: rotate(30deg);
-}
-
-.hexagon-item-small:first-child {
-    margin-left: 0;
-}
-.hexagon-item-small:hover {
-    z-index: 1;
-}
-.hexagon-item-small:hover .hex-item-small:last-child {
-      opacity: 1;
-      -webkit-transform: scale(1.3);
-      -moz-transform: scale(1.3);
-      -ms-transform: scale(1.3);
-      -o-transform: scale(1.3);
-      transform: scale(1.3);
-}
-.hexagon-item-small:hover .hex-item-small:first-child {
-      opacity: 1;
-      -webkit-transform: scale(1.2);
-      -moz-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-      -o-transform: scale(1.2);
-      transform: scale(1.2);
-}
-
-.hexagon-item-small:hover .hex-item-small:first-child div:before,
-.hexagon-item-small:hover .hex-item-small:first-child div:after {
-        height: 5px;
-}
-
-.hexagon-item-small:hover .hex-item-small div::before,
-.hexagon-item-small:hover .hex-item-small div::after {
-      background-color: #ff0037;
-}
-.hexagon-item-small:hover .hex-content-small svg {
-      -webkit-transform: scale(0.97);
-      -moz-transform: scale(0.97);
-      -ms-transform: scale(0.97);
-      -o-transform: scale(0.97);
-      transform: scale(0.97);
-}
-
-
-.hex-item-small {
-  position: absolute;
-  top: 0;
-  left: 12.5px;
-  width: 25px;
-  height: 43.30127px;
-}
-.hex-content-small {
-  color: #fff;
-  display: block;
-  height: 45px;
-  margin: 0 auto;
-  position: relative;
-  text-align: center;
-  transform: rotate(-30deg);
-  width: 39px;
-}
-.hex-content-small .hex-content-inner-small {
-    left: 50%;
-    margin: -3px 0 0 2px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-.hex-content-small .icon {
-    display: block;
-    font-size: 9px;
-    line-height: 7.5px;
-    margin-bottom: 3px;
-}
-.hex-content-small .title {
-    display: block;
-    font-family: "Open Sans", sans-serif;
-    font-size: 9px;
-    letter-spacing: 1px;
-    line-height: 6px;
-    text-transform: uppercase;
-}
-.hex-content-small svg {
-    left: -7px;
-    position: absolute;
-    top: -13px;
-    transform: scale(0.87);
-    z-index: -1;
-    -webkit-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
-    -moz-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
-    -o-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
-}
 
 /*
   https://developer.mozilla.org/en-US/docs/Web/CSS/transform
@@ -644,6 +581,27 @@ div.transform-scale {
   transform: scale(0.30, 0.30);
   transform: translate(-50%, -50%);
   */
+}
+
+nav.nav-bar {
+
+  transform: scale(0.5);
+  float: right;
+  margin-top: -35px;
+
+}
+
+nav.transform-scale-5 {
+  transform: scale(0.5);
+}
+
+nav.float-left {
+  float: left;
+}
+
+nav.margin-top-left {
+  margin-top: -35px;
+  margin-left: -50px;
 }
 
 
@@ -691,7 +649,8 @@ div.transform-scale {
 
 .hexagon-item:hover .hex-item div::before,
 .hexagon-item:hover .hex-item div::after {
-      background-color: #ff0037; 
+      background-color: #ff0037;
+      /* background-color: yellow; */
 }
 .hexagon-item:hover .hex-content svg {
       -webkit-transform: scale(0.97);
@@ -748,6 +707,7 @@ div.transform-scale {
     -o-transform-origin: center center;
     transform-origin: center center; 
 }
+/*      background-color: yellow; */
 .hex-item div::before, .hex-item div::after {
       background-color: #1e2530;
       content: "";
@@ -789,28 +749,43 @@ div.transform-scale {
       transform: rotate(120deg); 
 }
 /*  nth-child.3 */
-.hex-item div:nth-child(4) {
-      -webkit-transform: rotate(180deg);
-      -moz-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-      -o-transform: rotate(180deg);
-      transform: rotate(180deg);
+
+/*
+button.hex-content {
+    color: red;
+    border: inherit;
+    position: inherit;
+    background-color: inherit;
+
 }
-.hex-item div:nth-child(5) {
-      -webkit-transform: rotate(240deg);
-      -moz-transform: rotate(240deg);
-      -ms-transform: rotate(240deg);
-      -o-transform: rotate(240deg);
-      transform: rotate(240deg);
-}
-.hex-item div:nth-child(6) {
-      -webkit-transform: rotate(300deg);
-      -moz-transform: rotate(300deg);
-      -ms-transform: rotate(300deg);
-      -o-transform: rotate(300deg);
-      transform: rotate(300deg);
+  transform: rotate(-30deg);
+  height: 180px;
+  width: 156px;
+*/
+
+button[type="button"] {
+  cursor: pointer;  
 }
 
+a[type="button"] {
+  cursor: pointer;  
+  color: yellow;
+
+}
+
+button.hex-content {
+
+  color: red;
+  background-color: inherit;
+  background: inherit;
+  border: inherit;
+
+  right: -4px;
+  top: -2px;
+
+  cursor: pointer;  
+
+}
 
 
 .hex-content {
@@ -975,6 +950,16 @@ div.transform-scale {
   */
 
 @media only screen and (max-width: 767px) {
+
+  /*
+  header[class="boarder-top-red"] {
+    border-top: 4px solid #ff0037;
+  }
+  */
+
+  header.boarder-top-red {
+      border-top: 4px solid #ff0037;
+  }
 
   div.boarder-top-red {
     border-top: 4px solid #ff0037;
