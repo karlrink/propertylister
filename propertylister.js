@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-24-1';
+const version = '🌎 property lister 2022-05-24-2';
 
 /* 
  * SPA (Single-Page Application)
@@ -123,6 +123,7 @@ function viewPhoto() {
             style="
                margin-top: 2px;
                color: #ff0037;
+               font-size: 30px;
           "></i>
 
           </div>
@@ -176,6 +177,7 @@ function viewSubmit() {
             style="
                margin-top: 2px;
                color: #ff0037;
+               font-size: 30px;
           "></i>
 
           </div>
@@ -185,10 +187,7 @@ function viewSubmit() {
 
 <form id="form" onsubmit="submitForm(event)">
 
-<div style="
-
-
-">
+<div>
 
     <div class="hexagon-item">
         <div class="hex-item">
@@ -626,6 +625,7 @@ async function viewList() {
             style="
                margin-top: 2px;
                color: #ff0037;
+               font-size: 30px;
           "></i>
 
           </div>
@@ -778,10 +778,11 @@ function viewInfo() {
         <a href="?">
           <div>
 
-          <i class="fa fa-home icon"
+          <i class="fa fa-home"
             style="
                margin-top: 2px;
                color: #ff0037;
+               font-size: 30px;
           "></i>
 
           </div>
@@ -802,7 +803,6 @@ function viewInfo() {
     html += `
     </div>
     <div>
-            <a href="?">Home</a>
             <button type="button" onclick="return addLocalStore();">Add Item</button>
             <button type="button" onclick="localStorage.clear();location.reload();">Clear Storage</button>
             <button type="button" onclick="return Login();">Login</button>
