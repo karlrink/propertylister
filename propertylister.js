@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-24-2';
+const version = '🌎 property lister 2022-05-24-r3';
 
 /* 
  * SPA (Single-Page Application)
@@ -249,11 +249,11 @@ function viewSubmit() {
 
       <br>
 
-      <button type="submit">Submit</button>
       <hr>
 
     `;
 
+      //<button type="submit">Submit</button>
       //<label for="hoa_fee">hoa_fee:</label>
       //<input type="text" id="hoa_fee" name="hoa_fee" placeholder="hoa_fee (Optional)">
       //<br>
