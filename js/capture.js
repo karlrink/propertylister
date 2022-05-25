@@ -26,34 +26,107 @@
   var startbutton = null;
 
   function showViewLiveResultButton() {
-    if (window.self !== window.top) {
-      // Ensure that if our document is in a frame, we get the user
-      // to first open it in its own tab or window. Otherwise, it
-      // won't be able to request permission for camera access.
-      document.querySelector(".contentarea").remove();
-      const button = document.createElement("button");
-      button.textContent = "View live result of the example code above";
-      document.body.append(button);
-      button.addEventListener('click', () => window.open(location.href));
-      return true;
-    }
+
+        if (window.self !== window.top) {
+          // Ensure that if our document is in a frame, we get the user
+          // to first open it in its own tab or window. Otherwise, it
+          // won't be able to request permission for camera access.
+
+          document.querySelector(".contentarea").remove();
+          const button = document.createElement("button");
+          button.textContent = "View live result of the example code above";
+          document.body.append(button);
+          button.addEventListener('click', () => window.open(location.href));
+          return true;
+        }
+
     return false;
   }
 
   function startup() {
+
     if (showViewLiveResultButton()) { return; }
+
+    // var videoElement = document.querySelector('video');
+
     video = document.getElementById('video');
     canvas = document.getElementById('canvas');
     photo = document.getElementById('photo');
     startbutton = document.getElementById('startbutton');
 
-    navigator.mediaDevices.getUserMedia({video: true, audio: false})
+    audioSelect = document.getElementById('audioSource');
+    videoSelect = document.getElementById('videoSource');
+
+    audioSelect.onchange = getStream;
+    videoSelect.onchange = getStream;
+
+    getStream().then(getDevices).then(gotDevices);
+
+    function getDevices() {
+        // AFAICT in Safari this only gets default devices until gUM is called :/
+        return navigator.mediaDevices.enumerateDevices();
+    }
+
+    function gotDevices(deviceInfos) {
+          window.deviceInfos = deviceInfos; // make available to console
+          console.log('Available input and output devices:', deviceInfos);
+          for (const deviceInfo of deviceInfos) {
+            const option = document.createElement('option');
+            option.value = deviceInfo.deviceId;
+            if (deviceInfo.kind === 'audioinput') {
+              option.text = deviceInfo.label || `Microphone ${audioSelect.length + 1}`;
+              audioSelect.appendChild(option);
+            } else if (deviceInfo.kind === 'videoinput') {
+              option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+              videoSelect.appendChild(option);
+            }
+          }
+    }
+
+
+    function getStream() {
+          if (window.stream) {
+            window.stream.getTracks().forEach(track => {
+              track.stop();
+            });
+          }
+          const audioSource = audioSelect.value;
+          const videoSource = videoSelect.value;
+          const constraints = {
+            audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
+            video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+          };
+          return navigator.mediaDevices.getUserMedia(constraints).
+            then(gotStream).catch(handleError);
+    }
+
+    function gotStream(stream) {
+          window.stream = stream; // make stream available to console
+          audioSelect.selectedIndex = [...audioSelect.options].
+            findIndex(option => option.text === stream.getAudioTracks()[0].label);
+          videoSelect.selectedIndex = [...videoSelect.options].
+            findIndex(option => option.text === stream.getVideoTracks()[0].label);
+          video.srcObject = stream;
+    }
+
+    function handleError(error) {
+        console.error('Error: ', error);
+    }
+
+    // stream is defined here and now
+
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false 
+    })
     .then(function(stream) {
-      video.srcObject = stream;
-      video.play();
+        video.srcObject = stream;
+
+        video.play();
+
     })
     .catch(function(err) {
-      console.log("An error occurred: " + err);
+        console.log("An error occurred: " + err);
     });
 
     video.addEventListener('canplay', function(ev){

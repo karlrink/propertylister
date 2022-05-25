@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-25-0';
+const version = '🌎 property lister 2022-05-25-1';
 
 /* 
  * SPA (Single-Page Application)
@@ -145,6 +145,14 @@ function viewPhoto() {
   <p>
    using your built-in webcam
   </p>
+
+<div class="select">
+    <label for="audioSource">Audio source: </label><select id="audioSource"></select>
+</div>
+
+<div class="select">
+    <label for="videoSource">Video source: </label><select id="videoSource"></select>
+</div>
 
 <div class="contentarea">
 
