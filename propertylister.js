@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-24-r3';
+const version = '🌎 property lister 2022-05-25-0';
 
 /* 
  * SPA (Single-Page Application)
@@ -113,6 +113,12 @@ function viewWelcome() {
 function viewPhoto() {
     document.title = 'Property Lister: Photo';
 
+    var script_capture = document.createElement('script');
+    script_capture.src = 'js/capture.js?features=default';
+    script_capture.async = true;
+
+    document.head.appendChild(script_capture);
+
     let htmlSegment = `
     <header class="boarder-top-red">
 
@@ -133,18 +139,35 @@ function viewPhoto() {
 
     <main>
 
-    <br>
+  <h1>
+    Still photo capture
+  </h1>
+  <p>
+   using your built-in webcam
+  </p>
 
-    Take a Photo
+<div class="contentarea">
 
-    <br>
+  <div class="camera">
+    <video id="video">Video stream not available.</video>
+    <button id="startbutton">Take photo</button>
+  </div>
 
-    🚧 UNDER CONSTRUCTION 🚧
+  <div>
+    <canvas id="canvas"> </canvas>
+  </div>
 
-    <br>
+  <div class="output">
+        <img id="photo" alt="The screen capture will appear in this box.">
+  </div>
+
+</div>
+
 
     </main>
+
     <footer></footer>
+    <br>
     `;
 
     container.innerHTML = htmlSegment;
@@ -869,21 +892,26 @@ console.log('well well delete');
 
 //-----------------------------------------------------------
 
-//const location_href = new URL(location.href);
-const params = new URLSearchParams(location.search);
-const view = params.get('view');
+
+// var currentLocation = window.location;
+// <protocol>//<hostname>:<port>/<pathname><search><hash>
+const href = new URL(location.href);
+const search = new URLSearchParams(location.search);
+const hash = window.location.hash;
+const view = search.get('view');
+
 
 function router() {
 
-    if (params.has('logout')) {
+    if (search.has('logout')) {
         return Logout();
     }
 
-    if (params.has('login')) {
+    if (search.has('login')) {
         return Login();
     }
 
-    if (params.has('view')) {
+    if (search.has('view')) {
 
         if (view === 'info') {
             return viewInfo();
@@ -908,6 +936,12 @@ function router() {
         if (view === 'welcome') {
             return viewWelcome();
         }
+
+        /*
+        if (hash === '#welcome') {
+            return viewWelcome();
+        }
+        */
 
     }
 
