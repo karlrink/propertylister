@@ -765,6 +765,10 @@ button.hex-content {
 
 button[type="button"] {
   cursor: pointer;  
+  color: red;
+  background: inherit;
+
+
 }
 
 a[type="button"] {
@@ -775,13 +779,24 @@ a[type="button"] {
 
 button.hex-content {
 
-  color: red;
+  /* color: red; */
   background-color: inherit;
   background: inherit;
   border: inherit;
 
+  /*
   right: -4px;
   top: -2px;
+  // this needs help //
+  */
+
+
+/*
+  right: -4px;
+  top: -2px;
+  right: inherit;
+  top: inherit;
+*/
 
   cursor: pointer;  
 

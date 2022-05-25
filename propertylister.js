@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-24-0';
+const version = '🌎 property lister 2022-05-24-1';
 
 /* 
  * SPA (Single-Page Application)
@@ -114,14 +114,36 @@ function viewPhoto() {
     document.title = 'Property Lister: Photo';
 
     let htmlSegment = `
+    <header class="boarder-top-red">
+
+        <a href="?">
+          <div>
+
+          <i class="fa fa-home icon"
+            style="
+               margin-top: 2px;
+               color: #ff0037;
+          "></i>
+
+          </div>
+        </a>
+
+    </header>
+
+    <main>
+
+    <br>
+
     Take a Photo
+
     <br>
 
     🚧 UNDER CONSTRUCTION 🚧
 
     <br>
 
-    <a href="?"><button type="button">Home</button></a>
+    </main>
+    <footer></footer>
     `;
 
     container.innerHTML = htmlSegment;
@@ -148,16 +170,15 @@ function viewSubmit() {
     <header class="boarder-top-red"> 
 
         <a href="?">
-        <button type="button">
-              <i class="fa fa-home"
-                 style="
+          <div>
 
-                   color:#ff0037;
-                   background-color: inherit;
-                   background: inherit;
+          <i class="fa fa-home icon" 
+            style="
+               margin-top: 2px;
+               color: #ff0037;
+          "></i>
 
-              "></i>
-        </button>
+          </div>
         </a>
 
     </header>
@@ -166,15 +187,9 @@ function viewSubmit() {
 
 <div style="
 
-     transform: scale(0.5);
-     float: right;
-     position: fixed;
-     top: 0;
-
-     width: 100%;
-     left: 40%;
 
 ">
+
     <div class="hexagon-item">
         <div class="hex-item">
             <div></div>
@@ -193,13 +208,13 @@ function viewSubmit() {
                 </span>
                 <span class="title">Submit</span>
             </span>
-            <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 0 0" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
             </svg>
         </button>
     </div>
 
-</div>
+<div>
 
 <br>
 
@@ -602,14 +617,24 @@ async function viewList() {
 
     let htmlSegment = '';
     htmlSegment += `
-    <header>
-      <a href="?">Home</a>
+    <header class="boarder-top-red">
+
+        <a href="?">
+          <div>
+
+          <i class="fa fa-home icon"
+            style="
+               margin-top: 2px;
+               color: #ff0037;
+          "></i>
+
+          </div>
+        </a>
+
     </header>
+
     <main>
 
-    <div>
-    View List
-    </div>
     `;
 
     const opensearch_data =
@@ -748,7 +773,21 @@ function viewInfo() {
     let html = '';
 
     html += `
-    <header></header>
+    <header class="boarder-top-red">
+
+        <a href="?">
+          <div>
+
+          <i class="fa fa-home icon"
+            style="
+               margin-top: 2px;
+               color: #ff0037;
+          "></i>
+
+          </div>
+        </a>
+
+    </header>
     <main>
     <div>
     `;
