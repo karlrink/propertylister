@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-25-1.a1';
+const version = '🌎 property lister 2022-05-26-0';
 
 /* 
  * SPA (Single-Page Application)
@@ -161,9 +161,9 @@ function viewPhoto() {
     <button id="startbutton">Take photo</button>
   </div>
 
-  <div>
-    <canvas id="canvas"> </canvas>
-  </div>
+  <br>
+
+  <canvas id="canvas"> </canvas>
 
   <div class="output">
         <img id="photo" alt="The screen capture will appear in this box.">
