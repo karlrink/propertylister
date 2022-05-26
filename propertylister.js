@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-26-3';
+const version = '🌎 property lister 2022-05-26-4';
 
 /* 
  * SPA (Single-Page Application)
@@ -163,6 +163,8 @@ function viewPhoto() {
     <video id="video" autoplay muted playsinline > Video stream not available. </video>
     <button id="startbutton">Take photo</button>
   </div>
+
+  <br>
 
   <canvas id="canvas"></canvas>
 

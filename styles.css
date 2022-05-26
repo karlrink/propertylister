@@ -1026,48 +1026,66 @@ and (orientation: landscape)
 #video {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
+  /*
   width:320px;
   height:240px;
+  */
 }
 
 #photo {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
+  /*
   width:320px;
   height:240px;
+  */
 }
 
 #canvas {
 
   display:none;
 
+  width: inherit;
+  height: inherit;
+
+  /* 
+
   width: 320px;
   height:240px;
 
-  /* 
   border: 1px solid yellow; 
   display:inline-block;
   */
 }
 
 .camera {
-  width: 320px;
-  height:240px;
+
+  width: inherit;
+  height: inherit;
+
   display:inline-block;
 
   border: 1px solid red;
+  /*
+  width: 320px;
+  height:240px;
+  */
 }
 
 .output {
-  width: 320px;
-  height:240px;
+  width: inherit;
+  height: inherit;
+
   display:inline-block;
   /* vertical-align: top; */
 
   /*
+  width: 320px;
+  height:240px;
   */
   border: 1px solid white;
 }
+
 
 #startbutton {
   display:block;
