@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-26-2';
+const version = '🌎 property lister 2022-05-26-3';
 
 /* 
  * SPA (Single-Page Application)
@@ -155,6 +155,7 @@ function viewPhoto() {
     <label for="videoSource">Video source: </label><select id="videoSource"></select>
 </div>
 
+<br>
 
 <div class="contentarea">
 

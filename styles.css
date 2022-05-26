@@ -1038,25 +1038,29 @@ and (orientation: landscape)
 }
 
 #canvas {
+
   display:none;
 
-  width: 340px;
+  width: 320px;
+  height:240px;
 
-  border: 1px solid yellow; 
   /* 
+  border: 1px solid yellow; 
   display:inline-block;
   */
 }
 
 .camera {
-  width: 340px;
+  width: 320px;
+  height:240px;
   display:inline-block;
 
   border: 1px solid red;
 }
 
 .output {
-  width: 340px;
+  width: 320px;
+  height:240px;
   display:inline-block;
   /* vertical-align: top; */
 
