@@ -1,5 +1,5 @@
 
-const version = '🌎 property lister 2022-05-26-0';
+const version = '🌎 property lister 2022-05-26-1';
 
 /* 
  * SPA (Single-Page Application)
@@ -142,8 +142,9 @@ function viewPhoto() {
   <h1>
     Still photo capture
   </h1>
+
   <p>
-   using your built-in webcam
+   Select your built-in webcam
   </p>
 
 <div class="select">
@@ -163,11 +164,12 @@ function viewPhoto() {
 
   <br>
 
-  <canvas id="canvas"> </canvas>
+  <canvas id="canvas"></canvas>
 
   <div class="output">
         <img id="photo" alt="The screen capture will appear in this box.">
   </div>
+
 
 </div>
 
