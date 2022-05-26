@@ -54,11 +54,7 @@
         video = document.getElementById('video');
         canvas = document.getElementById('canvas');
         photo = document.getElementById('photo');
-
         startbutton = document.getElementById('startbutton');
-        postbutton = document.getElementById('postbutton');
-
-        postoutput = document.getElementById('postoutput');
 
         audioSelect = document.getElementById('audioSource');
         videoSelect = document.getElementById('videoSource');
@@ -121,8 +117,6 @@
 
         // stream is defined here and now
 
-        // navigator.mediaDevices.getUserMedia
-
         navigator.mediaDevices.getUserMedia({
             video: true,
             audio: false 
@@ -161,14 +155,6 @@
           ev.preventDefault();
         }, false);
 
-        postbutton.addEventListener('click', function(ev){
-          postPhoto();
-          //console.log('postbutton');
-          //console.log(data);
-          ev.preventDefault();
-        }, false);
-
-
         clearphoto();
 
   } //end startup
@@ -201,91 +187,12 @@
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
 
-      //console.log(data);
-      //localStorage.setItem('photo_data', photo_base64);
-      localStorage.setItem('photo_base64', data);
-
+      // console.log(data);
 
     } else {
       clearphoto();
     }
   }
-
-
-  async function getResponse(response) {
-    if ( ! response.ok) {
-        throw new Error(response.status + ' ' + response.statusText);
-    }
-    return response;
-  }
-
-  async function postPhoto() {
-      console.log('post photo');
-      const photo_base64 = localStorage.getItem('photo_base64');
-      console.log(photo_base64);
-
-      let htmlSegment = '';
-
-      htmlSegment += `
-        hello post
-      `;
-
-      const origin = localStorage.getItem('origin');
-      const base64 = localStorage.getItem('base64');
-
-
-      const photo_id = 'photo-1';
-      const opensearch_data =
-      {
-        "photo_id": photo_id,
-        "photo_base64": photo_base64
-      }
-
-      const url = origin + "/property-lister/_doc/" + photo_id + ".json";
-
-      //console.log(url);
-
-      const headers = {};
-      headers['Authorization'] = 'Basic ' + base64;
-      headers['Content-Type'] = 'application/json';
-
-      const post = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        headers: headers,
-        body: JSON.stringify(opensearch_data)
-      })
-      .then(getResponse)
-      .catch(err => document.write('Request Failed ', err));
-
-      const response = await post.json();
-
-      console.log(JSON.stringify(response));
-
-      htmlSegment += JSON.stringify(response);
-
-
-
-      document.getElementById('postoutput').innerHTML = htmlSegment;
-
-  }
-
-/*
-  function postPhoto() {
-
-      var context = canvas.getContext('2d');
-      canvas.width = width;
-      canvas.height = height;
-      context.drawImage(video, 0, 0, width, height);
-
-      var data = canvas.toDataURL('image/png');
-      photo.setAttribute('src', data);
-
-      console.log(data);
-
-  }
-*/
-
 
   // Set up our event listener to run the startup process
   // once loading is complete.

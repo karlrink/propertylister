@@ -1024,7 +1024,7 @@ and (orientation: landscape)
 
 
 #video {
-  border: 1px solid black;
+  border: 1px solid red;
   box-shadow: 2px 2px 3px black;
   /*
   width:320px;
@@ -1033,7 +1033,7 @@ and (orientation: landscape)
 }
 
 #photo {
-  border: 1px solid black;
+  border: 1px solid white;
   box-shadow: 2px 2px 3px black;
   /*
   width:320px;
@@ -1065,8 +1065,8 @@ and (orientation: landscape)
 
   display:inline-block;
 
-  border: 1px solid red;
   /*
+  border: 1px solid red;
   width: 320px;
   height:240px;
   */
@@ -1080,10 +1080,10 @@ and (orientation: landscape)
   /* vertical-align: top; */
 
   /*
+  border: 1px solid white;
   width: 320px;
   height:240px;
   */
-  border: 1px solid white;
 }
 
 
@@ -1100,10 +1100,11 @@ and (orientation: landscape)
 
   display: block;
 
-  margin-left: 10%;
+  margin-left: 10px;
   margin-right:auto;
 
-  bottom:32px;
+  bottom: 32px;
+
   background-color: rgba(0, 150, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
@@ -1111,6 +1112,36 @@ and (orientation: landscape)
   font-family: "Lucida Grande", "Arial", sans-serif;
   color: rgba(255, 255, 255, 1.0);
 }
+
+
+#postbutton {
+
+/*
+  position:relative;
+
+  margin-left:auto;
+  margin-right:auto;
+
+*/
+  position: relative;
+
+  display: block;
+
+  margin-left: 10px;
+  margin-right:auto;
+
+  bottom: 32px;
+
+  background-color: rgba(0, 150, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1.0);
+}
+
+
+
 
 .contentarea {
   font-size: 16px;
